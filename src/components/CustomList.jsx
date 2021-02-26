@@ -24,6 +24,7 @@ class CustomList extends Component {
         this.selectItem = this.selectItem.bind(this);
         this.resetInput = this.resetInput.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.input = React.createRef();
     }
 
     clearArray() {
@@ -98,13 +99,22 @@ class CustomList extends Component {
     }
 
     selectItem(item, i) {
-        this.setState((state) => ({
-            ...state,
-            input: {
-                value: item,
-                index: i,
-            },
-        }));
+        // this.setState((state) => ({
+        //     ...state,
+        //     input: {
+        //         value: item,
+        //         index: i,
+        //     },
+        // }));
+
+        this.setState((state) => {
+            return {
+                input: {
+                    value: item,
+                    index: i,
+                }
+            }
+        }, () => this.input.current.focus());
     }
 
     handleKeyDown(event) {
@@ -162,6 +172,7 @@ class CustomList extends Component {
                             onChange={this.onChangeValue}
                             autoComplete="off"
                             onKeyDown={this.handleKeyDown}
+                            ref={this.input}
                         />
                         <button onClick={this.addElement}>Add element</button>
                         {this.isControlSet("push") && (
