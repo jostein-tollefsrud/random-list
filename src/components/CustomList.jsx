@@ -149,7 +149,7 @@ class CustomList extends Component {
     }
 
     deleteItem() {
-        // code ...
+        // code ... array.filter()
     }
 
     render() {
