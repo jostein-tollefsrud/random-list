@@ -148,8 +148,15 @@ class CustomList extends Component {
         }
     }
 
-    deleteItem() {
-        // code ... array.filter()
+    deleteItem(i) {
+        const list = [...this.state.list];
+        let filtered = list.filter((value, index, arr) => {
+            return index !== i
+        });
+        this.setState(state => ({
+            ...state,
+             list: filtered
+        }))
     }
 
     render() {
@@ -160,7 +167,7 @@ class CustomList extends Component {
                         <li key={index}> 
                             {item} 
                             <span style={{cursor: 'pointer'}} onClick={() => this.selectItem(item, index)}>✏️</span>
-                            <span style={{cursor: 'pointer'}} onClick={() => this.deleteItem}>❌</span>
+                            <span style={{cursor: 'pointer'}} onClick={() => this.deleteItem(index)}>❌</span>
                         </li>
                     ))}
                 </ul>
