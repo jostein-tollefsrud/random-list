@@ -149,14 +149,15 @@ class CustomList extends Component {
     }
 
     deleteItem(i) {
-        const list = [...this.state.list];
-        let filtered = list.filter((value, index, arr) => {
-            return index !== i
-        });
-        this.setState(state => ({
+        this.setState(state => {
+            let list = state.list.filter((value, index) => {
+                return index !== i
+            });
+            return {
             ...state,
-             list: filtered
-        }))
+             list
+            }
+        })
     }
 
     render() {
