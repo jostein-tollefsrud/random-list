@@ -148,16 +148,19 @@ class CustomList extends Component {
         }
     }
 
+    deleteItem() {
+        // code ...
+    }
+
     render() {
         return (
             <div className="container">
                 <ul className="list-container">
                     {this.state.list.map((item, index) => (
-                        <li
-                            key={index}
-                            onClick={() => this.selectItem(item, index)}
-                        >
-                            {item}
+                        <li key={index}> 
+                            {item} 
+                            <span style={{cursor: 'pointer'}} onClick={() => this.selectItem(item, index)}>✏️</span>
+                            <span style={{cursor: 'pointer'}} onClick={() => this.deleteItem}>❌</span>
                         </li>
                     ))}
                 </ul>
