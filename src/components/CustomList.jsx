@@ -40,7 +40,7 @@ class CustomList extends Component {
     }
 
     resetArray() {
-        this.setState({ list: [...this.props.list] });
+        this.setState({ list: INITIAL_LIST });
     }
 
     isControlSet(controlName) {
